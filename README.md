@@ -9,14 +9,14 @@
 
 
 
-This project simulates a real-world, production-style analytics workflow using the **Instacart Market Basket** dataset. It covers the complete lifecycle from **raw data ingestion** to a **business-ready star schema** in Snowflake and an **executive dashboard** in Power BI/Tableau.
+This project simulates a real-world, production-style analytics workflow using the **Instacart Market Basket** dataset. It covers the complete lifecycle from **raw data ingestion** to a **business-ready star schema** in Snowflake and an **executive dashboard** in Tableau.
 
-> ✅ **Focus:** Analytics + dashboarding (KPIs, trends, business insights)  
-> ⚠️ **Note:** The raw dataset is ~600MB, so it is **not stored in GitHub** (GitHub file size limit). See **Data Setup**.
+>  **Focus:** Analytics + dashboarding (KPIs, trends, business insights)  
+>  **Note:** The raw dataset is 600MB, so it is **not stored in GitHub**. See **Data Setup**.
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 **Goal:** Build an end-to-end ELT pipeline and deliver actionable business insights through dashboards.
 
 **What this project includes:**
@@ -24,39 +24,32 @@ This project simulates a real-world, production-style analytics workflow using t
 - Build parameterized ingestion pipeline in **Azure Data Factory**
 - Load into **Snowflake RAW** schema (staging)
 - Transform + model into **CURATED** schema with a **star schema**
-- Create a **2-page dashboard** with **5–6 KPI visuals** in **Power BI/Tableau**
+- Create a **2-page dashboard** with **5–6 KPI visuals** in **Tableau**
 - Present key insights + recommendations
 
 ---
 
-## 🧱 Architecture
+## Architecture
 **Kaggle / Local CSVs**  
 → **Azure Blob Storage (RAW landing)**  
 → **Azure Data Factory (ADF) pipeline**  
 → **Snowflake RAW schema**  
 → **Snowflake CURATED schema (Star Schema)**  
-→ **Power BI / Tableau Dashboard**  
+→ **Tableau Dashboard**  
 → **Insights & Conclusion**
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 - **Data Ingestion:** Azure Data Factory (ADF)
 - **Storage:** Azure Blob Storage
 - **Warehouse:** Snowflake
 - **Modeling:** SQL (Star schema + KPI queries)
-- **BI:** Power BI (DAX) / Tableau
+- **BI:**  Tableau
 - **Version Control:** Git + GitHub
 
 ---
 
-## 🧾 Dataset
-
-**Dataset:** Instacart Market Basket Analysis (Kaggle)
-
-### Why the dataset is not included in GitHub
-- Raw data is ~600MB and exceeds GitHub’s single-file limit (~100MB).
-- This repo contains the full pipeline code + SQL + dashboard artifacts needed to reproduce the analysis.
 
 ### Expected raw files (common Instacart set)
 - `aisles.csv`
@@ -68,7 +61,7 @@ This project simulates a real-world, production-style analytics workflow using t
 
 ---
 
-## ✅ Data Setup 
+##  Data Setup 
 
 ### (production-like): Azure Blob Storage + ADF
 1. Download the dataset from Kaggle.
@@ -78,7 +71,7 @@ This project simulates a real-world, production-style analytics workflow using t
 
 ---
 
-## 📊 Dashboard (Power BI / Tableau)
+## Dashboard (Power BI / Tableau)
 
 ### Dashboard Summary
 - **Pages:** 2  
@@ -97,7 +90,7 @@ This project simulates a real-world, production-style analytics workflow using t
   
 ---
 
-## 🔧 Prerequisites
+##  Prerequisites
 - Azure account (Blob Storage + Data Factory)
 - Snowflake account (warehouse + database access)
 - Power BI Desktop or Tableau
@@ -105,7 +98,7 @@ This project simulates a real-world, production-style analytics workflow using t
 
 ---
 
-## ⚙️ Setup & Configuration
+##  Setup & Configuration
 
 ### 1) Snowflake Setup
 Run:
@@ -133,7 +126,7 @@ This typically creates:
 
 ---
 
-## 🏗️ Data Modeling (Snowflake CURATED Star Schema)
+##  Data Modeling (Snowflake CURATED Star Schema)
 
 After ingesting into RAW, run transformations to build a star schema.
 
@@ -152,7 +145,7 @@ Run:
 - `dim_departments`
 - `dim_customers` (derived from orders/user_id)
 
-✅ Benefits:
+ Benefits:
 - fast, clean analytical queries
 - consistent KPI definitions
 - reliable dashboard measures
@@ -178,10 +171,7 @@ Examples you should include in this file:
 
 ---
 
-## 📈 Insights (Add Your Final Findings Here)
-
-> Replace the placeholders with your exact numbers from the dashboard.  
-> Below are strong, resume-friendly insights you can keep even without exact numbers.
+## 📈 Insights 
 
 ### Insight 1 — Peak Ordering Behavior
 Ordering volume is concentrated in specific time windows (peak hours), indicating predictable demand patterns.  
@@ -205,7 +195,7 @@ Customers show repeat purchasing patterns across similar departments/aisles.
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 This project demonstrates an end-to-end analytics workflow:
 - Ingested raw CSV data into **Azure Blob Storage**
