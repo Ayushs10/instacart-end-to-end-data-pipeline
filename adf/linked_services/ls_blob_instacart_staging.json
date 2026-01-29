@@ -1,0 +1,12 @@
+{
+    "name": "ls_blob_instacart_staging",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "sasUri": "your-sas-url",
+            "encryptedCredential": "your-password"
+        }
+    }
+}
