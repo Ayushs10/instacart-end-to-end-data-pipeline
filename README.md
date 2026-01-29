@@ -171,7 +171,7 @@ Examples you should include in this file:
 
 ---
 
-## 📈 Insights 
+##  Insights 
 
 ### Insight 1 — Peak Ordering Behavior
 Ordering volume is concentrated in specific time windows (peak hours), indicating predictable demand patterns.  
