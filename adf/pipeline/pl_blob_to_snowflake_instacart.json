@@ -1,0 +1,91 @@
+{
+    "name": "pl_blob_to_snowflake_all",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy_Blob_to_Snowflake",
+                "type": "ForEach",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@json('[\n  { \"file\": \"orders.csv\", \"table\": \"ORDERS\" },\n  { \"file\": \"aisles.csv\", \"table\": \"AISLES\" },\n  { \"file\": \"departments.csv\", \"table\": \"DEPARTMENTS\" },\n  { \"file\": \"products.csv\", \"table\": \"PRODUCTS\" },\n  { \"file\": \"order_products__prior.csv\", \"table\": \"ORDER_PRODUCTS_PRIOR\" },\n  { \"file\": \"order_products__train.csv\", \"table\": \"ORDER_PRODUCTS_TRAIN\" }\n]')\n",
+                        "type": "Expression"
+                    },
+                    "isSequential": false,
+                    "batchCount": 3,
+                    "activities": [
+                        {
+                            "name": "Copy_Blob_to_Snowflake_Dynamic",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "DelimitedTextSource",
+                                    "storeSettings": {
+                                        "type": "AzureBlobStorageReadSettings",
+                                        "recursive": false,
+                                        "enablePartitionDiscovery": false
+                                    },
+                                    "formatSettings": {
+                                        "type": "DelimitedTextReadSettings"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "SnowflakeV2Sink",
+                                    "importSettings": {
+                                        "type": "SnowflakeImportCopyCommand"
+                                    }
+                                },
+                                "enableStaging": true,
+                                "stagingSettings": {
+                                    "linkedServiceName": {
+                                        "referenceName": "ls_blob_instacart_staging",
+                                        "type": "LinkedServiceReference"
+                                    },
+                                    "path": "instacart/staging"
+                                },
+                                "enableSkipIncompatibleRow": false
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "ds_blob_instacart_raw",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "file_name": {
+                                            "value": "@item().file",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "ds_snowflake_instacart",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "table_name": {
+                                            "value": "@item().table\n",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2026-01-23T08:46:04Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
