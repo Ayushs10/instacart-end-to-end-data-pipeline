@@ -1,0 +1,25 @@
+{
+    "name": "ds_snowflake_instacart",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_snowflake_instacart",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "table_name": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "SnowflakeV2Table",
+        "schema": [],
+        "typeProperties": {
+            "schema": "RAW",
+            "table": {
+                "value": "@dataset().table_name\n",
+                "type": "Expression"
+            }
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
